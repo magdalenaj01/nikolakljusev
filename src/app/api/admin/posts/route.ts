@@ -1,0 +1,3 @@
+import {NextResponse} from 'next/server';import {getAdmin} from '@/lib/auth';import {db} from '@/lib/db';import {postSchema} from '@/lib/postValidation';
+export const runtime='nodejs';
+export async function POST(req:Request){if(!await getAdmin())return NextResponse.json({error:'Unauthorized'},{status:401});const parsed=postSchema.safeParse(await req.json().catch(()=>null));if(!parsed.success)return NextResponse.json({error:parsed.error.issues[0]?.message},{status:400});try{return NextResponse.json(await db.post.create({data:parsed.data}),{status:201})}catch(e){return NextResponse.json({error:e instanceof Error&&e.message==='DUPLICATE_SLUG'?'Овој URL slug веќе постои.':'Server error'},{status:e instanceof Error&&e.message==='DUPLICATE_SLUG'?409:500})}}

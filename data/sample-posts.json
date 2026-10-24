@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "tvoram-za-makedonija-domot",
+    "category": "activities",
+    "titleMk": "Творам за Македонија – Домот во срцето мое",
+    "titleEn": "Creating for Macedonia – Home in My Heart",
+    "excerptMk": "Награди за литературниот конкурс на фондацијата.",
+    "excerptEn": "Awards for the Foundation literary competition.",
+    "contentMk": "Во просториите на Фондацијата „Никола Кљусев“ беа доделени награди во рамки на проектот „Творам за Македонија“.",
+    "contentEn": "The Nikola Kljusev Foundation presented awards as part of its Creating for Macedonia project.",
+    "id": "sample-1",
+    "imageUrl": null,
+    "published": true,
+    "createdAt": "2026-01-01T12:00:00.000Z",
+    "updatedAt": "2026-01-01T12:00:00.000Z"
+  },
+  {
+    "slug": "vet-business-partnerships",
+    "category": "projects",
+    "titleMk": "Партнерства на стручните училишта и компаниите",
+    "titleEn": "Partnerships between vocational schools and companies",
+    "excerptMk": "Поврзување на образованието со компаниите.",
+    "excerptEn": "Connecting vocational education and companies.",
+    "contentMk": "Проект посветен на подобра соработка меѓу стручните училишта и компаниите.",
+    "contentEn": "A project supporting stronger partnerships between vocational schools and companies.",
+    "id": "sample-2",
+    "imageUrl": null,
+    "published": true,
+    "createdAt": "2026-01-01T12:00:00.000Z",
+    "updatedAt": "2026-01-01T12:00:00.000Z"
+  },
+  {
+    "slug": "patot-kon-nezavisnosta",
+    "category": "literature",
+    "titleMk": "Патот кон македонската независност",
+    "titleEn": "The Road to Macedonian Independence",
+    "excerptMk": "Книга на Никола Кљусев.",
+    "excerptEn": "A book by Nikola Kljusev.",
+    "contentMk": "„Патот кон македонската независност“ – Никола Кљусев, Скопје, 2014.",
+    "contentEn": "The Road to Macedonian Independence – Nikola Kljusev, Skopje, 2014.",
+    "id": "sample-3",
+    "imageUrl": null,
+    "published": true,
+    "createdAt": "2026-01-01T12:00:00.000Z",
+    "updatedAt": "2026-01-01T12:00:00.000Z"
+  }
+]

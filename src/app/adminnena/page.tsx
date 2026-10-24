@@ -1,0 +1,1 @@
+import {redirect} from 'next/navigation';import {getAdmin} from '@/lib/auth';export default async function Admin(){redirect((await getAdmin())?'/adminnena/dashboard':'/adminnena/login')}

@@ -1,0 +1,1 @@
+'use client';import {useRouter} from 'next/navigation';export default function LogoutButton(){const router=useRouter();return <button className="text-sm text-red-700 underline" onClick={async()=>{await fetch('/api/admin/logout',{method:'POST'});router.replace('/adminnena/login');router.refresh()}}>Одјави се</button>}

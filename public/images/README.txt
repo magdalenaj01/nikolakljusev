@@ -1,0 +1,1 @@
+Add real foundation photos here, e.g. nikola-kljusev.jpg, foundation-exterior.jpg, foundation-interior.jpg. The homepage currently uses a stylized animated composition instead of falsely attributing stock photography. You can reference images from posts or replace the hero composition in src/components/home/Hero.tsx.

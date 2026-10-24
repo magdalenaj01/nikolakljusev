@@ -1,0 +1,1 @@
+import {redirect} from 'next/navigation';import {getAdmin} from '@/lib/auth';import PostEditor from '@/components/admin/PostEditor';export default async function New(){if(!await getAdmin())redirect('/adminnena/login');return <main className="container-wide py-12"><h1 className="mb-8 font-serif text-4xl">Нова објава</h1><PostEditor/></main>}
