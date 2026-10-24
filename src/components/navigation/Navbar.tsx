@@ -7,32 +7,57 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import { navItems, translations, type Locale } from "@/lib/i18n";
+import {
+    navItems,
+    translations,
+    type Locale,
+} from "@/lib/i18n";
+
 import NavItem from "./NavItem";
 import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
 
-export default function Navbar({ locale }: { locale: Locale }) {
+export default function Navbar({
+                                   locale,
+                               }: {
+    locale: Locale;
+}) {
     const path = usePathname();
     const t = translations[locale];
+
     const [scrolled, setScrolled] = useState(false);
 
+    // Detect page scrolling
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 30);
         };
 
         handleScroll();
-        window.addEventListener("scroll", handleScroll, { passive: true });
 
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, {
+            passive: true,
+        });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     return (
         <motion.header
-            initial={{ y: -60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
+            initial={{
+                y: -60,
+                opacity: 0,
+            }}
+            animate={{
+                y: 0,
+                opacity: 1,
+            }}
+            transition={{
+                duration: 0.55,
+                ease: "easeOut",
+            }}
             className={`
         sticky top-0 z-50
         border-b border-[#8F2935]/10
@@ -47,13 +72,15 @@ export default function Navbar({ locale }: { locale: Locale }) {
         >
             <div
                 className={`
-          container-wide
-          mx-auto flex items-center justify-between gap-4
+          container-wide mx-auto
+          flex items-center justify-between gap-4
           transition-all duration-500
           ${scrolled ? "h-[64px]" : "h-[72px]"}
         `}
             >
-                {/* Logo */}
+                {/* ============================
+            LOGO
+        ============================ */}
                 <Link
                     href={`/${locale}`}
                     className="group flex min-w-0 shrink-0 items-center"
@@ -74,29 +101,42 @@ export default function Navbar({ locale }: { locale: Locale }) {
                     />
                 </Link>
 
-                {/* Desktop Navigation */}
+                {/* ============================
+            DESKTOP NAVIGATION
+        ============================ */}
                 <nav className="hidden items-center gap-1.5 lg:flex">
-                    {navItems.map((item) => (
-                        <NavItem
-                            key={item.key}
-                            locale={locale}
-                            href={item.href}
-                            label={t[item.key]}
-                            active={
-                                path === `/${locale}${item.href}` ||
-                                (item.href !== "" &&
-                                    item.href !== "/" &&
-                                    path.startsWith(`/${locale}${item.href}/`))
-                            }
-                        />
-                    ))}
+                    {navItems.map((item) => {
+                        const itemPath = `/${locale}${item.href}`;
+
+                        const isActive =
+                            path === itemPath ||
+                            (item.href !== "" &&
+                                path.startsWith(`${itemPath}/`));
+
+                        return (
+                            <NavItem
+                                key={item.key}
+                                locale={locale}
+                                href={item.href}
+                                label={t[item.key]}
+                                active={isActive}
+                            />
+                        );
+                    })}
                 </nav>
 
-                {/* Language + Mobile */}
+                {/* ============================
+            LANGUAGE AND MOBILE MENU
+        ============================ */}
                 <div className="flex shrink-0 items-center gap-3">
+                    {/* Language Switcher */}
                     <LanguageSwitcher locale={locale} />
 
-                    <MobileMenu locale={locale} pathname={path} />
+                    {/* Mobile Navigation */}
+                    <MobileMenu
+                        locale={locale}
+                        pathname={path}
+                    />
                 </div>
             </div>
         </motion.header>
